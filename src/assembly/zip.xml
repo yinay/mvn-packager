@@ -1,0 +1,50 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+    <id>bin</id>
+
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.bat</include>
+            </includes>
+            <lineEnding>dos</lineEnding>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.build.directory}/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/logs</directory>
+            <outputDirectory>logs</outputDirectory>
+        </fileSet>
+
+    </fileSets>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <excludes>
+                <exclude>com.longhz.server:HeartBeatServer</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>
